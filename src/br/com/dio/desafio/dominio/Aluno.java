@@ -2,14 +2,15 @@ package br.com.dio.desafio.dominio;
 
 import java.util.*;
 
-public class Dev {
+public class Aluno {
     private String nome;
+    private int idade;
     private Set<Conteudo> conteudosInscritos = new LinkedHashSet<>();
     private Set<Conteudo> conteudosConcluidos = new LinkedHashSet<>();
 
-    public void inscreverBootcamp(Bootcamp bootcamp){
-        this.conteudosInscritos.addAll(bootcamp.getConteudos());
-        bootcamp.getDevsInscritos().add(this);
+    public void inscreverBootcamp(Curso curso){
+        this.conteudosInscritos.addAll(curso.getConteudos());
+        curso.getDevsInscritos().add(this);
     }
 
     public void progredir() {
@@ -46,6 +47,12 @@ public class Dev {
         this.nome = nome;
     }
 
+    public int getIdade() {
+        return idade;
+    }
+    public void setIdade(int idade) {
+        this.idade = idade;
+    }
     public Set<Conteudo> getConteudosInscritos() {
         return conteudosInscritos;
     }
@@ -66,8 +73,8 @@ public class Dev {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        Dev dev = (Dev) o;
-        return Objects.equals(nome, dev.nome) && Objects.equals(conteudosInscritos, dev.conteudosInscritos) && Objects.equals(conteudosConcluidos, dev.conteudosConcluidos);
+        Aluno aluno = (Aluno) o;
+        return Objects.equals(nome, aluno.nome) && Objects.equals(conteudosInscritos, aluno.conteudosInscritos) && Objects.equals(conteudosConcluidos, aluno.conteudosConcluidos);
     }
 
     @Override
